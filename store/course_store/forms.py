@@ -24,3 +24,8 @@ class RegisterForm(UserCreationForm):
             self.cleaned_data['password1']
         )
         return user
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label='username', min_length=5, max_length=150)
+    password = forms.CharField(label='password', widget=forms.PasswordInput)
