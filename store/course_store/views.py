@@ -38,7 +38,8 @@ def log_in(request):
         form = LoginForm()
     return render(request, "log_in.html", {'form': form})
 
+
 def log_out(request):
     logout(request)
-    messages.success(request, f'log out sucessfully')
+    messages.success(request, f'log out successfully')
     return redirect('/')
