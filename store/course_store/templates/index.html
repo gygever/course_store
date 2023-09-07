@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-<div>
-    Main
+<div>Courses</div>
+{% for course in courses %}
+<div> <h4>{{ course.name }}</h4>
+    Price:{{course.price}}<br>
+    Start:{{course.start_date}}<br>
+    End:{{course.end_date}}<br>
+    <br>
+    <br>
 </div>
+{% endfor %}
 {% endblock content %}

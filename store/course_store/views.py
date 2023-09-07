@@ -1,11 +1,14 @@
+import datetime
 from .forms import RegisterForm, LoginForm
+from .models import Courses, Curchased_courses
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 
 
 def index(responce):
-    return render(responce, 'index.html')
+    courses = Courses.objects.all()
+    return render(responce, 'index.html', {'courses': courses})
 
 
 def sign_up(request):
