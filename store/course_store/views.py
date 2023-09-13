@@ -6,9 +6,15 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 
 
-def index(responce):
+def index(request):
     courses = Courses.objects.all()
-    return render(responce, 'index.html', {'courses': courses})
+    date = datetime.datetime.now().date()
+    if request.user.is_authenticated:
+        purchased_courses = Curchased_courses.objects.filter(user_id=request.user.id).all()
+        purchased_courses_id = [i.course_id for i in purchased_courses]
+        return render(request, 'index.html', {'courses': courses, 'date': date, 'list_id': purchased_courses_id})
+    else:
+        return render(request, 'index.html', {'courses': courses, 'date': date})
 
 
 def sign_up(request):
@@ -45,4 +51,10 @@ def log_in(request):
 def log_out(request):
     logout(request)
     messages.success(request, f'log out successfully')
+    return redirect('/')
+
+
+def buy_course(request):
+    course_id = request.GET['buy']
+    purchased_course = Curchased_courses.objects.create(user_id=request.user.id, course_id=course_id)
     return redirect('/')

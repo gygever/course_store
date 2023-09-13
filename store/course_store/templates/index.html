@@ -9,5 +9,18 @@
     <br>
     <br>
 </div>
+{% if user.is_authenticated%}
+    {% if not course.id in list_id %}
+        {% if course.start_date > date %}
+            <form action="{% url 'buy_course' %}">
+                <button type="submit" value="{{ course.id }}" name="buy">Buy</button>
+            </form>
+        {% else %}
+            <div>course has already started</div>
+        {% endif %}
+    {% else %}
+        <div>already purchased</div>
+    {% endif %}
+{% endif %}
 {% endfor %}
 {% endblock content %}
