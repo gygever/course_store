@@ -12,7 +12,8 @@
 {% if user.is_authenticated%}
     {% if not course.id in list_id %}
         {% if course.start_date > date %}
-            <form action="{% url 'buy_course' %}">
+            <form action="{% url 'buy_course' %}" method="POST">
+                {% csrf_token %}
                 <button type="submit" value="{{ course.id }}" name="buy">Buy</button>
             </form>
         {% else %}

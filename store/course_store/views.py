@@ -55,6 +55,6 @@ def log_out(request):
 
 
 def buy_course(request):
-    course_id = request.GET['buy']
+    course_id = request.POST['buy']
     purchased_course = Curchased_courses.objects.create(user_id=request.user.id, course_id=course_id)
     return redirect('/')
