@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Profile</h3>
+<div>
+    Username: {{ user.username }} <br>
+    Email: {{user.email}}
+</div>
+<h4>Purchased courses:</h4>
+{% for course in purchased_courses %}
+{% if course %}
+<div> <h4>{{ course.name }}</h4>
+    Price:{{course.price}}<br>
+    Start:{{course.start_date}}<br>
+    End:{{course.end_date}}<br>
+    <br>
+    <br>
+</div>
+{% endif %}
+{% endfor %}
+{% endblock content %}

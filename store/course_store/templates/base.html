@@ -14,11 +14,16 @@
     {% endfor %}
 </div>
 {% endif %}
-{% if request.user.is_authenticated %}
+{% if user.is_authenticated %}
 <a href="{% url 'logout' %}">Log out</a>
 {% endif %}
+{% if not user.is_authenticated %}
 <a href="{% url 'login' %}">Log in</a>
-<a href="{% url 'signup' %}">Sign in</a>
+<a href="{% url 'signup' %}">Sign up</a>
+{% endif %}
+{% if user.is_authenticated %}
+<a href="{% url 'profile' %}">Profile</a>
+{% endif %}
 {% block content %}
 {% endblock content %}
 </body>

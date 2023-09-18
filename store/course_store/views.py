@@ -58,3 +58,9 @@ def buy_course(request):
     course_id = request.POST['buy']
     purchased_course = Curchased_courses.objects.create(user_id=request.user.id, course_id=course_id)
     return redirect('/')
+
+
+def profile(request):
+    courses_id = Curchased_courses.objects.filter(user_id=request.user.id).all()
+    purchased_courses = [Courses.objects.filter(id=course_id.course_id).first() for course_id in courses_id]
+    return render(request, 'profile.html', {'purchased_courses': purchased_courses})

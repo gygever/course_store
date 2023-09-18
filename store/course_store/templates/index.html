@@ -9,7 +9,7 @@
     <br>
     <br>
 </div>
-{% if user.is_authenticated%}
+{% if user.is_authenticated %}
     {% if not course.id in list_id %}
         {% if course.start_date > date %}
             <form action="{% url 'buy_course' %}" method="POST">
