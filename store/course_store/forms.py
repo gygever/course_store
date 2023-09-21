@@ -14,7 +14,7 @@ class RegisterForm(UserCreationForm):
         email = self.cleaned_data['email'].lower()
         new = User.objects.filter(email=email)
         if new.count():
-            raise ValidationError(" Email Already Exist")
+            raise ValidationError("Email Already Exist")
         return email
 
     def save(self, commit=True):
