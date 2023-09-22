@@ -44,6 +44,8 @@ def log_in(request):
             else:
                 messages.error(request, f'wrong username or password')
     else:
+        if request.user.is_authenticated:
+            return redirect('/')
         form = LoginForm()
     return render(request, "log_in.html", {'form': form})
 
