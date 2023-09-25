@@ -29,6 +29,6 @@ This site is simple online course store with the functionality of registration, 
   - `$ python3 -m pip install -r requirements.txt`
   - if you get `Error: pg_config executable not found`, write `$ sudo apt-get install libpq_dev` and try to install requirements again 
 5. run app
-    - `$ python3 manade.py runserver`
+    - `$ python3 manage.py runserver`
 ## Webapp design
 <img src="./img/design.jpg">
